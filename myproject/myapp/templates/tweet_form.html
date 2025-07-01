@@ -1,0 +1,29 @@
+{% extends "layout.html" %} {% block title %}Tweet form{% endblock %} 
+
+
+{% block content %}
+ {% if form.instance.pk %}
+<h2 class="bg-amber-600 text-white text-lg font-semibold p-2 rounded">
+  ✏️ Edit Tweet
+</h2>
+{% else %}
+<h2 class="bg-blue-600 text-white text-lg font-semibold p-2 rounded">
+  📝 Create Tweet
+</h2>
+
+{% endif %}
+
+<div class="mt-15 bg-blue-950">
+<form method='post' enctype='multipart/form-data'>
+
+    {% csrf_token %}
+{{form.as_p}}
+
+<button class='bg-yellow-400' type="submit"> submit </button>
+</form>
+<a href="{url 'tweet_list'}">
+    back-to-tweet-list
+</a>
+</div>
+
+{% endblock %}
